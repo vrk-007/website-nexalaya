@@ -1,0 +1,140 @@
+.section {
+  padding: var(--section-padding);
+  background: transparent;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto 4rem;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #2d3748;
+  margin-bottom: 1rem;
+}
+
+.eyebrowWhy {
+  text-transform: uppercase;
+  color: var(--blue-600);
+}
+
+.title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: #2D3748;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+}
+
+.accent {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #2D3748;
+  line-height: 1.75;
+}
+
+.brandN {
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-style: inherit;
+  font-weight: inherit;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 960px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card */
+.card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--blue-200);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: 0 2px 16px rgba(198, 217, 245, 0.4);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(6px);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--blue-50), transparent);
+  opacity: 0;
+  transition: var(--transition);
+  border-radius: inherit;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--blue-200);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* Icon */
+.iconBox {
+  font-size: 2rem;
+  margin-bottom: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: var(--blue-50);
+  border-radius: var(--radius-md);
+  position: relative;
+  z-index: 1;
+}
+
+.cardTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 0.6rem;
+  position: relative;
+  z-index: 1;
+}
+
+.cardDesc {
+  font-size: 0.93rem;
+  color: var(--gray-500);
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+}

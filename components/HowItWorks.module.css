@@ -1,0 +1,123 @@
+.section {
+  padding: var(--section-padding);
+  background: transparent;
+}
+
+.header {
+  text-align: center;
+  max-width: 580px;
+  margin: 0 auto 4rem;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blue-600);
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: #2D3748;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+}
+
+.accent {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #2D3748;
+  line-height: 1.75;
+}
+
+.brandN {
+  color: #2563eb;
+  font-style: inherit;
+  font-weight: inherit;
+}
+
+/* Steps */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .steps { grid-template-columns: 1fr; }
+}
+
+/* Step Card */
+.stepCard {
+  background: rgba(255,255,255,0.88);
+  border: 1px solid var(--blue-200);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem;
+  box-shadow: 0 2px 16px rgba(198,217,245,0.35);
+  position: relative;
+  transition: var(--transition);
+  backdrop-filter: blur(6px);
+}
+
+.stepCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--blue-300);
+}
+
+/* Step Number */
+.stepNumber {
+  font-size: 2.5rem;
+  font-weight: 900;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 1.25rem;
+  display: inline-block;
+  letter-spacing: -0.04em;
+}
+
+/* Connector line (desktop only) */
+.connector {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .connector {
+    display: block;
+    position: absolute;
+    top: 2.25rem;
+    right: -1.25rem;
+    width: 1.5rem;
+    height: 2px;
+    background: linear-gradient(to right, var(--blue-300), var(--blue-100));
+    z-index: 1;
+  }
+}
+
+.stepTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #2D3748;
+  margin-bottom: 0.75rem;
+}
+
+.stepDesc {
+  font-size: 0.93rem;
+  color: #2D3748;
+  line-height: 1.75;
+}

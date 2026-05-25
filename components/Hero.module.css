@@ -1,0 +1,405 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 9rem 1.5rem 5rem;
+  background: transparent;
+  overflow: hidden;
+}
+
+/* ── Background decoration blobs ────────────────────────────── */
+.bgBlob1 {
+  position: absolute;
+  width: 640px;
+  height: 640px;
+  top: -140px;
+  right: -140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(198, 217, 245, 0.55) 0%, transparent 68%);
+  pointer-events: none;
+}
+
+.bgBlob2 {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  bottom: -120px;
+  left: -120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(198, 217, 245, 0.4) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.bgGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(37, 99, 235, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.03) 1px, transparent 1px);
+  background-size: 52px 52px;
+  pointer-events: none;
+}
+
+/* ── Inner container ─────────────────────────────────────────── */
+.inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* ── Badge ───────────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--blue-700);
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid var(--blue-200);
+  border-radius: var(--radius-full);
+  padding: 0.35rem 1rem;
+  box-shadow: 0 2px 12px rgba(198, 217, 245, 0.6), var(--shadow-sm);
+  letter-spacing: 0.01em;
+  backdrop-filter: blur(8px);
+}
+
+.badgeDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--blue-500);
+  animation: pulse-ring 2s infinite;
+  flex-shrink: 0;
+}
+
+/* ── Brand mark (logo + name) ───────────────────────────────── */
+.brandMark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brandIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  /* subtle glow */
+  filter: drop-shadow(0 2px 8px rgba(37, 99, 235, 0.35));
+}
+
+.brandName {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 400;
+  color: #2d3748;
+  letter-spacing: -0.03em;
+  -webkit-font-smoothing: antialiased;
+}
+
+.brandNameN {
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 400;
+}
+
+.inlineN {
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-style: inherit;
+  font-weight: inherit;
+}
+
+/* ── Headline ────────────────────────────────────────────────── */
+.headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: #2D3748;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  /* Override any global animate-fadeUp on the h1 itself */
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* ── Screen-reader only ──────────────────────────────────────── */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Per-character animation ─────────────────────────────────── */
+
+/*
+ * Base state: invisible, blurred, slightly lifted.
+ * `animation-fill-mode: both` keeps them hidden before their delay fires.
+ */
+.char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(14px);
+  filter: blur(6px);
+  will-change: opacity, transform, filter;
+}
+
+/*
+ * When the parent sets `started`, each char fires its staggered keyframe.
+ * The delay is set inline via style.animationDelay.
+ */
+.charVisible {
+  animation: charReveal 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes charReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+    filter: blur(6px);
+  }
+
+  60% {
+    filter: blur(0px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+}
+
+/* ── Gradient portion of the headline ───────────────────────── */
+.gradientWrap {
+  display: inline-block;
+}
+
+/*
+ * Gradient text on individual spans requires a trick:
+ * wrap each char in a span with a gradient background-clip.
+ */
+.gradientChar {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Sub-headline (Google-style display heading) ─────────────── */
+.subline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  margin-top: 1.8rem;
+  text-align: center;
+}
+
+/* Each line is a flex row of words */
+.sublineLine {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.35em;
+  overflow: visible;
+}
+
+/* Individual word — starts invisible */
+.sublineWord {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: #1a2535;
+  opacity: 0;
+  transform: translateY(22px);
+  filter: blur(4px);
+  will-change: opacity, transform, filter;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Triggered per-word once `done` fires */
+.sublineWordVisible {
+  animation: wordReveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes wordReveal {
+  0%   { opacity: 0; transform: translateY(22px); filter: blur(4px); }
+  55%  { filter: blur(0px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0px); }
+}
+
+/* "Seamless" gets the blue gradient accent */
+.sublineAccent {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subline strong {
+  color: var(--gray-700);
+  font-weight: 700;
+}
+
+
+/* ── CTA Row ─────────────────────────────────────────────────── */
+.ctaRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.primaryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+  padding: 0.85rem 1.75rem;
+  background: var(--gradient-cta);
+  border-radius: var(--radius-full);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+  transition: var(--transition);
+}
+
+.primaryBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.45);
+}
+
+.secondaryBtn {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--blue-600);
+  text-decoration: none;
+  padding: 0.85rem 1.75rem;
+  border: 1.5px solid var(--blue-200);
+  border-radius: var(--radius-full);
+  background: white;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.secondaryBtn:hover {
+  border-color: var(--blue-500);
+  background: var(--blue-50);
+  transform: translateY(-1px);
+}
+
+/* ── Stats Row ───────────────────────────────────────────────── */
+.statsRow {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--blue-200);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 24px rgba(198, 217, 245, 0.5), var(--shadow-sm);
+  overflow: hidden;
+  margin-top: 1rem;
+  backdrop-filter: blur(10px);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.25rem 2.5rem;
+  flex: 1;
+  border-right: 1px solid var(--blue-100);
+}
+
+.stat:last-child {
+  border-right: none;
+}
+
+.statNumber {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 750;
+  color: var(--blue-600);
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.statLabel {
+  font-size: 0.78rem;
+  color: var(--gray-400);
+  font-weight: 500;
+  text-align: center;
+  margin-top: 2px;
+}
+
+/* ── Show / hide helpers ─────────────────────────────────────── */
+.hidden {
+  opacity: 0;
+  transform: translateY(18px);
+  /* no transition — we want an instant cut-to-invisible */
+}
+
+.revealFadeUp {
+  animation: revealFadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes revealFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .statsRow {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .stat {
+    border-right: none;
+    border-bottom: 1px solid var(--blue-100);
+    padding: 1rem 2rem;
+  }
+
+  .stat:last-child {
+    border-bottom: none;
+  }
+}
