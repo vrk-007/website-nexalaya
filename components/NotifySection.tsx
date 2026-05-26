@@ -10,7 +10,6 @@ export default function NotifySection() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!email) return;
-    // In production this will call an API route
     setSubmitted(true);
   }
 
@@ -24,11 +23,12 @@ export default function NotifySection() {
           <div className={styles.content}>
             <span className={styles.eyebrow}>Launching Soon</span>
             <h2 className={styles.title}>
-              Be the first campus<br />to go proxy-free
+              Bring <span className={styles.brandN}>n</span>exalaya<br />
+              to your campus.
             </h2>
             <p className={styles.subtitle}>
-              Join the waitlist and get early access when <span className={styles.brandN}>n</span>exalaya rolls out.
-              No spam — only what matters.
+              Book a live demo for your institution or join the waitlist for
+              early access. Be among the first campuses to go proxy-free.
             </p>
 
             {!submitted ? (
@@ -43,19 +43,28 @@ export default function NotifySection() {
                   className={styles.input}
                 />
                 <button type="submit" className={styles.btn} id="notify-submit-btn">
-                  Notify Me
+                  Book a Demo
                 </button>
               </form>
             ) : (
               <div className={styles.success} id="notify-success">
                 <span>✅</span>
-                <span>You&apos;re on the list! We&apos;ll reach out soon.</span>
+                <span>We&apos;ll reach out to schedule your campus demo soon.</span>
               </div>
             )}
 
             <p className={styles.note}>
               🔒 Your email is safe. We don&apos;t share data.
             </p>
+
+            {/* Trust signals */}
+            <div className={styles.trustRow}>
+              <span className={styles.trustItem}>✦ NAAC Criteria 2, 5, 6, 7</span>
+              <span className={styles.trustDot} />
+              <span className={styles.trustItem}>✦ IoT-Powered Classrooms</span>
+              <span className={styles.trustDot} />
+              <span className={styles.trustItem}>✦ Zero Proxy Guarantee</span>
+            </div>
           </div>
         </div>
       </div>

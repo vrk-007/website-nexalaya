@@ -3,21 +3,21 @@ import styles from "./HowItWorks.module.css";
 const steps = [
   {
     step: "01",
-    title: "Professor starts session",
+    title: "Professor taps \"Start Attendance\"",
     description:
-      "The professor opens the nexalaya dashboard, selects the subject, and triggers an attendance session with one tap.",
+      "On the nexalaya app, the professor selects the subject and taps once. The IoT module plugged into the classroom instantly activates a secure local network — no internet, no delay.",
   },
   {
     step: "02",
-    title: "Student scans face",
+    title: "Face scan appears only in-range",
     description:
-      "Students open their nexalaya app. The camera activates and performs a real-time liveness check — no photo tricks.",
+      "The facial recognition prompt appears only on the app of students physically inside the classroom. Students outside the range cannot mark attendance — proxy is structurally impossible.",
   },
   {
     step: "03",
-    title: "Verified & recorded",
+    title: "Done in 10 seconds. Synced everywhere.",
     description:
-      "Once verified, attendance is marked instantly. The professor's dashboard updates live. No paperwork, no chaos.",
+      "Every verified face is marked instantly. The professor's dashboard updates live. Reports are generated automatically for the administration — zero paperwork, zero manual entry.",
   },
 ];
 
@@ -29,10 +29,12 @@ export default function HowItWorks() {
         <div className={styles.header}>
           <span className={styles.eyebrow}>How It Works</span>
           <h2 className={styles.title}>
-            Simple as <span className={styles.accent}>1 — 2 — 3</span>
+            Three taps.<br />
+            <span className={styles.accent}>Ten seconds.</span>
           </h2>
           <p className={styles.subtitle}>
-            No complex setup. No hardware dependencies. <span className={styles.brandN}>n</span>exalaya works on any smartphone.
+            No complex setup. No dedicated hardware room. The IoT module plugs
+            directly into any classroom — and your entire college goes smart.
           </p>
         </div>
 

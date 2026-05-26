@@ -2,40 +2,40 @@ import styles from "./Features.module.css";
 
 const features = [
   {
-    icon: "🧠",
-    title: "Facial Recognition",
-    description:
-      "AI-powered face detection ensures only the real student gets marked present — no photos, no proxies.",
-  },
-  {
-    icon: "🛡️",
-    title: "Proxy Proof",
-    description:
-      "Multi-layer liveness detection prevents proxy attendance. Every mark is authentic and tamper-resistant.",
-  },
-  {
     icon: "⚡",
-    title: "Real-Time Updates",
+    title: "10-Second Attendance",
     description:
-      "Attendance is recorded instantly and synced across all devices. Professors see live status in their dashboard.",
+      "What takes 20–30 minutes manually now takes 10 seconds. Professor taps once — every student in the classroom is marked in real time.",
+  },
+  {
+    icon: "🌐",
+    title: "IoT Local Network",
+    description:
+      "A wireless module plugged into the classroom creates a secure local network. Face scan activates only within classroom range — no internet needed.",
+  },
+  {
+    icon: "🧠",
+    title: "Proxy-Proof Face Recognition",
+    description:
+      "AI-powered liveness detection ensures only the real, physically present student gets marked. Photos and spoofing attempts are rejected instantly.",
+  },
+  {
+    icon: "🚨",
+    title: "At-Risk Student Alerts",
+    description:
+      "When a student's attendance drops below threshold, professors and parents are notified automatically — reducing dropouts before they happen.",
   },
   {
     icon: "📊",
-    title: "Smart Analytics",
+    title: "Real-Time Administration Dashboard",
     description:
-      "Detailed attendance reports, trends, and alerts for low-attendance students — all in one place.",
+      "College administration gets a live, bird's-eye view of attendance across every department, batch, and classroom — all from one dashboard.",
   },
   {
     icon: "🎓",
-    title: "Built for Colleges",
+    title: "NAAC Criteria 2, 5, 6, 7 Ready",
     description:
-      "Designed around how real college systems work — supports multiple departments, batches, and timetables.",
-  },
-  {
-    icon: "🔒",
-    title: "Secure & Private",
-    description:
-      "All biometric data is encrypted and stored safely. Compliant with privacy standards from day one.",
+      "Built to support Teaching-Learning (2), Student Support (5), Governance (6), and Institutional Values (7) — making NAAC documentation effortless.",
   },
 ];
 
@@ -45,14 +45,17 @@ export default function Features() {
       <div className="container">
         {/* Header */}
         <div className={styles.header}>
-          <span className={styles.eyebrow}><span className={styles.eyebrowWhy}>Why </span><span className={styles.brandN}>n</span>exalaya</span>
+          <span className={styles.eyebrow}>
+            <span className={styles.eyebrowWhy}>Why </span>
+            <span className={styles.brandN}>n</span>exalaya
+          </span>
           <h2 className={styles.title}>
-            Everything your campus needs,<br />
-            <span className={styles.accent}>nothing it doesn't</span>
+            One system.<br />
+            <span className={styles.accent}>Every advantage.</span>
           </h2>
           <p className={styles.subtitle}>
-            We built <span className={styles.brandN}>n</span>exalaya to solve one problem really well — making sure the
-            right student gets marked present, every time.
+            Designed around how Indian colleges actually work — not a generic SaaS
+            bolted onto your campus, but a purpose-built solution for your exact pain points.
           </p>
         </div>
 
