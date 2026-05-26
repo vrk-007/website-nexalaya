@@ -1,4 +1,5 @@
 import styles from "./Impact.module.css";
+import AnimateOnScroll from "./AnimateOnScroll";
 
 const stats = [
   {
@@ -52,60 +53,66 @@ export default function Impact() {
       <div className="container">
 
         {/* Header */}
-        <div className={styles.header}>
-          <span className={styles.eyebrow}>The Impact</span>
-          <h2 className={styles.title}>
-            Why 10 seconds<br />
-            <span className={styles.accent}>changes everything</span>
-          </h2>
-          <p className={styles.subtitle}>
-            The numbers your administration will present to management —
-            and the compliance your IQAC team has been waiting for.
-          </p>
-        </div>
+        <AnimateOnScroll>
+          <div className={styles.header}>
+            <span className={styles.eyebrow}>The Impact</span>
+            <h2 className={styles.title}>
+              Why 10 seconds<br />
+              <span className={styles.accent}>changes everything</span>
+            </h2>
+            <p className={styles.subtitle}>
+              The numbers your administration will present to management —
+              and the compliance your IQAC team has been waiting for.
+            </p>
+          </div>
+        </AnimateOnScroll>
 
         {/* Before / After grid */}
         <div className={styles.statsGrid}>
-          {stats.map((s) => (
-            <div key={s.label} className={styles.statCard}>
-              <div className={styles.beforeAfterRow}>
-                <div className={styles.beforeBlock}>
-                  <span className={styles.beforeLabel}>Before</span>
-                  <span className={styles.beforeValue}>{s.before}</span>
+          {stats.map((s, i) => (
+            <AnimateOnScroll key={s.label} delay={i * 100}>
+              <div className={styles.statCard}>
+                <div className={styles.beforeAfterRow}>
+                  <div className={styles.beforeBlock}>
+                    <span className={styles.beforeLabel}>Before</span>
+                    <span className={styles.beforeValue}>{s.before}</span>
+                  </div>
+                  <div className={styles.arrow} aria-hidden="true">→</div>
+                  <div className={styles.afterBlock}>
+                    <span className={styles.afterLabel}>After</span>
+                    <span className={styles.afterValue}>{s.after}</span>
+                  </div>
                 </div>
-                <div className={styles.arrow} aria-hidden="true">→</div>
-                <div className={styles.afterBlock}>
-                  <span className={styles.afterLabel}>After</span>
-                  <span className={styles.afterValue}>{s.after}</span>
-                </div>
+                <p className={styles.statDesc}>{s.label}</p>
               </div>
-              <p className={styles.statDesc}>{s.label}</p>
-            </div>
+            </AnimateOnScroll>
           ))}
         </div>
 
         {/* NAAC Callout */}
-        <div className={styles.naacBox}>
-          <div className={styles.naacHeader}>
-            <span className={styles.naacBadge}>NAAC 2.0</span>
-            <h3 className={styles.naacTitle}>
-              Built to fulfil NAAC criteria — out of the box
-            </h3>
-            <p className={styles.naacSub}>
-              nexalaya automatically generates the attendance data, reports, and
-              audit trails your IQAC team needs for the following criteria:
-            </p>
+        <AnimateOnScroll>
+          <div className={styles.naacBox}>
+            <div className={styles.naacHeader}>
+              <span className={styles.naacBadge}>NAAC 2.0</span>
+              <h3 className={styles.naacTitle}>
+                Built to fulfil NAAC criteria — out of the box
+              </h3>
+              <p className={styles.naacSub}>
+                nexalaya automatically generates the attendance data, reports, and
+                audit trails your IQAC team needs for the following criteria:
+              </p>
+            </div>
+            <div className={styles.naacGrid}>
+              {naac.map((n) => (
+                <div key={n.code} className={styles.naacItem}>
+                  <span className={styles.naacCode}>Criterion {n.code}</span>
+                  <span className={styles.naacItemLabel}>{n.label}</span>
+                  <p className={styles.naacItemDesc}>{n.desc}</p>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className={styles.naacGrid}>
-            {naac.map((n) => (
-              <div key={n.code} className={styles.naacItem}>
-                <span className={styles.naacCode}>Criterion {n.code}</span>
-                <span className={styles.naacItemLabel}>{n.label}</span>
-                <p className={styles.naacItemDesc}>{n.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+        </AnimateOnScroll>
 
       </div>
     </section>

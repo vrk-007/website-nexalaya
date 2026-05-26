@@ -1,4 +1,5 @@
 import styles from "./Features.module.css";
+import AnimateOnScroll from "./AnimateOnScroll";
 
 const features = [
   {
@@ -44,31 +45,35 @@ export default function Features() {
     <section className={styles.section} id="features">
       <div className="container">
         {/* Header */}
-        <div className={styles.header}>
-          <span className={styles.eyebrow}>
-            Why{" "}
-            <span className={styles.eyebrowBrand}>nexalaya</span>
-          </span>
-          <h2 className={styles.title}>
-            One system<br />
-            <span className={styles.accent}>Every advantage</span>
-          </h2>
-          <p className={styles.subtitle}>
-            Designed around how Indian colleges actually work —{" "}
-            <span className={styles.subtitleHighlight}>not a generic SaaS</span>{" "}
-            bolted onto your campus, but a{" "}
-            <span className={styles.subtitleHighlight}>purpose-built solution for your exact pain points</span>.
-          </p>
-        </div>
+        <AnimateOnScroll>
+          <div className={styles.header}>
+            <span className={styles.eyebrow}>
+              Why{" "}
+              <span className={styles.eyebrowBrand}>nexalaya</span>
+            </span>
+            <h2 className={styles.title}>
+              One system<br />
+              <span className={styles.accent}>Every advantage</span>
+            </h2>
+            <p className={styles.subtitle}>
+              Designed around how Indian colleges actually work —{" "}
+              <span className={styles.subtitleHighlight}>not a generic SaaS</span>{" "}
+              bolted onto your campus, but a{" "}
+              <span className={styles.subtitleHighlight}>purpose-built solution for your exact pain points</span>.
+            </p>
+          </div>
+        </AnimateOnScroll>
 
         {/* Grid */}
         <div className={styles.grid}>
-          {features.map((f) => (
-            <div key={f.title} className={styles.card}>
-              <div className={styles.iconBox}>{f.icon}</div>
-              <h3 className={styles.cardTitle}>{f.title}</h3>
-              <p className={styles.cardDesc}>{f.description}</p>
-            </div>
+          {features.map((f, i) => (
+            <AnimateOnScroll key={f.title} delay={i * 80}>
+              <div className={styles.card}>
+                <div className={styles.iconBox}>{f.icon}</div>
+                <h3 className={styles.cardTitle}>{f.title}</h3>
+                <p className={styles.cardDesc}>{f.description}</p>
+              </div>
+            </AnimateOnScroll>
           ))}
         </div>
       </div>

@@ -5,21 +5,21 @@
   right: 0;
   z-index: 100;
   background: rgba(240, 248, 255, 0.82);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(198, 217, 245, 0.6);
-  box-shadow: 0 1px 16px rgba(198, 217, 245, 0.4);
+  box-shadow: 0 1px 8px rgba(198, 217, 245, 0.2);
 }
 
 .nav {
   max-width: 1120px;
   margin: 0 auto;
   padding: 0 1.5rem;
-  height: 68px;
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 /* Logo */
@@ -58,7 +58,7 @@
   font-weight: 500;
   color: var(--gray-600);
   text-decoration: none;
-  padding: 0.4rem 0.85rem;
+  padding: 0.35rem 0.75rem;
   border-radius: var(--radius-full);
   transition: var(--transition);
 }
@@ -74,18 +74,18 @@
   font-weight: 600;
   color: white;
   text-decoration: none;
-  padding: 0.55rem 1.25rem;
+  padding: 0.5rem 1.1rem;
   background: var(--gradient-cta);
   border-radius: var(--radius-full);
-  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
   transition: var(--transition);
   white-space: nowrap;
   flex-shrink: 0;
 }
 
 .ctaBtn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+  transform: translateY(-0.5px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
 }
 
 /* Mobile: hide links */
