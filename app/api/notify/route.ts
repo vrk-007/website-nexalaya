@@ -17,7 +17,7 @@ export async function POST(request: Request) {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "kinjawadekaradi112@gmail.com",
+        user: "info.nexalaya@gmail.com",
         pass: process.env.EMAIL_APP_PASSWORD, 
       },
     });
@@ -28,7 +28,7 @@ export async function POST(request: Request) {
 
     // Send the email to the user who requested the demo
     await transporter.sendMail({
-      from: '"nexalaya Team" <kinjawadekaradi112@gmail.com>',
+      from: '"nexalaya Team" <info.nexalaya@gmail.com>',
       to: email, 
       subject: "Your nexalaya Campus Demo Request",
       html: htmlTemplate,
