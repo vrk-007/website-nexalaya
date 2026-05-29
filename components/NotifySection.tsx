@@ -71,7 +71,7 @@ export default function NotifySection() {
                     <input
                       id="notify-org"
                       type="text"
-                      placeholder="College / Org name"
+                      placeholder="College / Organisation"
                       value={org}
                       onChange={(e) => setOrg(e.target.value)}
                       required
