@@ -8,18 +8,22 @@ import path from "path";
  * Append a row to the Google Sheet with [Name, Email, Timestamp]
  */
 async function appendToSheet(name: string, email: string) {
-  const privateKey = (process.env.GOOGLE_PRIVATE_KEY || "").replace(/\\n/g, "\n");
-  const clientEmail = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
+  const base64Key = process.env.GOOGLE_SERVICE_ACCOUNT_BASE64;
   const spreadsheetId = process.env.GOOGLE_SHEETS_SPREADSHEET_ID;
 
-  if (!privateKey || !clientEmail || !spreadsheetId) {
+  if (!base64Key || !spreadsheetId) {
     console.warn("Google Sheets env vars missing — skipping sheet logging.");
     return;
   }
 
+  // Decode the base64-encoded service account JSON
+  const credentials = JSON.parse(
+    Buffer.from(base64Key, "base64").toString("utf-8")
+  );
+
   const auth = new google.auth.JWT({
-    email: clientEmail,
-    key: privateKey,
+    email: credentials.client_email,
+    key: credentials.private_key,
     scopes: ["https://www.googleapis.com/auth/spreadsheets"],
   });
 
